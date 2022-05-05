@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../inc/get_next_line.h"
 
 char	*n_finder(char *line)
 {
@@ -38,11 +38,11 @@ static char	*ft_remainder(int fd, char *buf, char *rem)
 			return (NULL);
 		buf[file_read] = '\0';
 		if (!rem && file_read != 0)
-			rem = ft_strdup(buf);
+			rem = ft_strdup_gnl(buf);
 		else
 		{
 			tmp = rem;
-			rem = ft_strjoin(tmp, buf);
+			rem = ft_strjoin_gnl(tmp, buf);
 			free(tmp);
 		}
 	}
@@ -57,7 +57,7 @@ static char	*ft_reserve(char *line)
 	i = 0;
 	while (line[i] != '\0' && line[i] != '\n')
 		i++;
-	reserve = ft_substr(line, i + 1, ft_strlen(line) - i - 1);
+	reserve = ft_substr_gnl(line, i + 1, ft_strlen_gnl(line) - i - 1);
 	if (*reserve == '\0')
 	{
 		free(reserve);

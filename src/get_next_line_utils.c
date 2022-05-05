@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../inc/get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen_gnl(const char *s)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 
@@ -33,45 +33,45 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 		while (++i < (dstsize - 1) && src[i] != '\0')
 			dst[i] = src[i];
 	dst[i] = '\0';
-	return (ft_strlen(src));
+	return (ft_strlen_gnl(src));
 }
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr_gnl(const char *s, unsigned int start, size_t len)
 {
 	char	*str;
 
 	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
+	if (start >= ft_strlen_gnl(s))
 	{
 		str = (char *) malloc(1);
 		*str = '\0';
 		return (str);
 	}
-	if ((ft_strlen(s) - start) < len)
-		len = ft_strlen(s) - start;
+	if ((ft_strlen_gnl(s) - start) < len)
+		len = ft_strlen_gnl(s) - start;
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (str);
-	ft_strlcpy(str, s + start, len + 1);
+	ft_strlcpy_gnl(str, s + start, len + 1);
 	str[len] = '\0';
 	return (str);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup_gnl(const char *s1)
 {
 	char	*adr;
 	size_t	size;
 
-	size = ft_strlen(s1);
+	size = ft_strlen_gnl(s1);
 	adr = malloc(size + 1);
 	if (!adr)
 		return (adr);
-	ft_strlcpy(adr, s1, size + 1);
+	ft_strlcpy_gnl(adr, s1, size + 1);
 	return (adr);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_gnl(char const *s1, char const *s2)
 {
 	char	*str;
 	size_t	i;
@@ -79,7 +79,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	i = 0;
-	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (!str)
 		return (NULL);
 	while (s1[i])
