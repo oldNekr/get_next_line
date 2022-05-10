@@ -85,5 +85,8 @@ git:
 	git add .
 	git commit -m "lipa"
 	git push
+	
+remove:
+	@$(RM) ../$(BIN)
 
-.PHONY: all clean fclean re norm git
+.PHONY: all clean fclean re norm git remove
